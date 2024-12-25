@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Notes App</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-photo/laptop-office-plant-black-background-top-view_169016-34505.jpg'); /* Use your own image URL here */
+            background-size: cover;
+            background-position: center;
+            color: rgb(12, 11, 11);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Navbar Styling */
+        nav {
+            width: 100%;
+            background-color:whitesmoke; /* Semi-transparent navbar */
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        nav a {
+            color:black;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: hsl(60, 5%, 4%); /* Change color on hover */
+        }
+
+        /* Form Styling */
+        form {
+            background-color: whitesmoke; /* Semi-transparent background */
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #61045f;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #aa076b;
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    
+    {% for message in messages %}
+      <center><h3>{{ message }}</center></h3>
+    {% endfor %}
+    
+  {% endif %}
+{% endwith %}
+<body>
+    <!-- Navbar -->
+    <nav>
+        <a>Simple Notes App</a>
+    </nav>
+
+    <!-- Form -->
+    
+    <h2>Enter your otp below</h2>
+    <form method="post">
+        <!-- Input field for note -->
+        <input type="text"  name="otp" placeholder="Enter your otp here" required>
+        
+                    
+        
+        <label for="otp"></label>
+        <!-- Submit button -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

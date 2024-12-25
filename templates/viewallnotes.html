@@ -1,0 +1,32 @@
+{% extends 'dashboard.html' %}
+{% block addcss %}
+    <title>View</title>
+    <link rel="stylesheet" href="#">
+{% endblock %}   
+{% block content %}
+    <h1>View All Notes</h1>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Notes_id</th>
+                <th>Title</th>
+                <th>Created_At</th>
+                <th>View</th>
+                <th>Update</th>
+                <th>Delete</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in ndata %}
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+                <td><a href="{{url_for('viewnotes',nid=i[0])}}">View</a></td>
+                <td><a href="{{url_for('updatenotes',nid=i[0])}}">Update</a></td>
+                <td><a href="{{url_for('deletenotes',nid=i[0])}}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

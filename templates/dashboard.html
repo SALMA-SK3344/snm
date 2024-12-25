@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- {% block addcss %}{% endblock %} -->
+
+    <!-- Ionicons CDN for Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+
+        body {
+            background: url('https://img.freepik.com/free-photo/laptop-office-plant-black-background-top-view_169016-34505.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* Navbar Styling */
+        nav {
+            
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            color: #fff;
+            /* position: fixed; */
+            width: 100%;
+            z-index: 100; 
+        }
+
+         .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        } 
+
+        /* Dropdown Styling */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.95em;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        /* Search Bar Styling */
+        .search-bar {
+            padding: 5px;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+            width: 200px;
+            margin-right: 20px;
+        }
+
+        .search-bar:focus {
+            background-color: #ddd;
+        }
+
+        /* Dashboard Content Styling */
+        .dashboard-content {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 100px auto 50px; /* Adjust for fixed navbar */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        h2 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .menu {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            .search-bar {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .dashboard-content {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+     <center><h3>{{ message }}</h3></html></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %} 
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">NotesApp</div>
+        <div class="menu">
+            <a href="{{url_for('dashboard')}}">Home</a>
+            <div class="dropdown">
+                <a href="#">Notes</a>
+                <div class="dropdown-content">
+                    <a href="{{url_for('addnotes')}}">addnotes</a>
+                    <a href="{{url_for('viewallnotes')}}">View All Notes</a>
+                    <a href="{{url_for('getexceldata')}}">Generate Excel Sheet</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Files</a>
+                <div class="dropdown-content">
+                    <a href="{{url_for('uploadfile')}}">Upload</a>
+                    <a href="{{url_for('allfiles')}}">View All Files</a>
+                    <a href="#">Manage Files</a>
+                </div>
+            </div>
+            {{session.get('user')}}
+            <form action="{{url_for('search')}}" method="POST">
+            <input type="text" class="search-bar" name="sname" placeholder="Search...">
+            <button onclick="window.location.href='#'">Search</button>
+
+        </form>
+            <a href="{{url_for('home')}}">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+        <h2>Welcome to Your Notes App</h2>
+        <p>Manage your notes and files easily from here.</p>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+{% if sdata %}
+<table border="1px">
+    <thead>
+        <tr>
+            <th>Notes_id</th>
+            <th>Title</th>
+            <!-- <th>description</th> -->
+            <th>Created_At</th>
+            <th>link</th>
+             
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in sdata %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[3]}}</td>
+            <td><a href="{{url_for('viewnotes',nid=i[0])}}">View</a></td>
+            <td><a href="{{url_for('updatenotes',nid=i[0])}}">Update</a></td>
+            <td><a href="{{url_for('deletenotes',nid=i[0])}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+</html>

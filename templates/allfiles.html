@@ -1,0 +1,33 @@
+{% extends 'dashboard.html' %}
+{% block addcss %}
+    <title>View</title>
+    <link rel="stylesheet" href="#">
+{% endblock %}   
+{% block content %}
+    <h1>View All Notes</h1>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>FileId</th>
+                <th>FileName</th>
+                <th>Created_At</th>
+                <th>link</th>
+                <!-- <th>Update</th>
+                <th>Delete</th>  -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in filesdata %}
+            
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td> 
+                <td><a href="{{url_for('viewfile',fid=i[0])}}">View</a></td>
+                <td><a href="{{url_for('downloadfile',fid=i[0])}}">Download</a></td>
+                <td><a href="#">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

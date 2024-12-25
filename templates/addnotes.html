@@ -1,0 +1,201 @@
+<!-- {% extends 'dashboard.html' %}
+{% block addcss %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            height: 100vh;
+            background: url('https://img.freepik.com/free-photo/laptop-office-plant-black-background-top-view_169016-34505.jpg') no-repeat center center/cover;
+        }
+         /* Navbar Styling */
+         nav {
+            
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            /* align-items: center; */
+            color: #fff;
+            /* position: fixed; */
+            width: 100%;
+            z-index: 100; 
+        }
+
+         .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        } 
+
+        /* Dropdown Styling */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.95em;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        /* Search Bar Styling */
+        .search-bar {
+            padding: 5px;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+            width: 200px;
+            margin-right: 20px;
+        }
+
+        .search-bar:focus {
+            background-color: #ddd;
+        }
+
+        /* Dashboard Content Styling */
+        .dashboard-content {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 100px auto 50px; /* Adjust for fixed navbar */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background: #0056b3;
+        }
+    </style>
+<!-- {% endblock %}
+{% block content %} -->
+</head>
+<body>
+    <!-- <nav>
+        <div class="logo">NotesApp</div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <div class="dropdown">
+                <a href="#">Notes</a>
+                <div class="dropdown-content">
+                    <a href="{{url_for('addnotes')}}">addnotes</a>
+                    <a href="#">View All Notes</a>
+                    <a href="#">Generate Excel Sheet</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Files</a>
+                <div class="dropdown-content">
+                    <a href="#">Upload</a>
+                    <a href="#">View All</a>
+                    <a href="#">Manage Files</a>
+                </div>
+            </div> -->
+            <!-- {{session.get('user')}} -->
+            <!-- <input type="text" class="search-bar" placeholder="Search...">
+            <a href="#">Logout</a>
+        </div>
+    </nav> -->
+
+    <div class="form-container">
+        <h1>Add Notes</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" placeholder="Enter note title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="5" placeholder="Enter note description" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+<!-- {% endblock%} -->
+

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!-- Ionicons CDN for Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            background: url('https://img.freepik.com/free-photo/laptop-office-plant-black-background-top-view_169016-34505.jpg') no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .form-box {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            background: transparent;
+            border: none;
+            border-radius: 20px;
+            backdrop-filter: blur(15px) brightness(80%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: whitesmoke;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .inputbox {
+            position: relative;
+            margin: 20px 0;
+            width: 310px;
+            border-bottom: 2px solid #fff;
+        }
+
+        .inputbox label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            color: whitesmoke;
+            font-size: 1em;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        input:focus~label,
+        input:valid~label {
+            top: -5px;
+        }
+
+        .inputbox input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            padding: 0 35px 0 5px;
+            color:whitesmoke;
+        }
+
+        .inputbox ion-icon {
+            position: absolute;
+            right: 8px;
+            color: whitesmoke;
+            font-size: 1.2em;
+            top: 20px;
+        }
+
+        button {
+            width: 100%;
+            height: 40px;
+            border-radius: 40px;
+            background-color: #d7594d;
+            transform: scale(1.05);
+            background-color:whitesmoke;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .register {
+            font-size: 0.9em;
+            color: #fff;
+            text-align: center;
+            margin: 25px 0 10px;
+        }
+
+        .register p a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .register p a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 480px) {
+            .form-box {
+                width: 100%;
+                border-radius: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="content">
+            <form  method="POST">
+                <h2>Create</h2>
+
+                <!-- User ID -->
+                <div class="inputbox">
+                    <ion-icon name="id-card-outline"></ion-icon>
+                    <input type="text" name="user_id" required>
+                    <label for="user_id">User ID</label>
+                </div>
+
+                <!-- User Name -->
+                <div class="inputbox">
+                    <ion-icon name="person-outline" ></ion-icon>
+                    <input type="text" name="user_name" required>
+                    <label for="user_name">User Name</label>
+                </div>
+
+                <!-- Email -->
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" name="email" required>
+                    <label for="email">Email</label>
+                </div>
+
+                <!-- Password -->
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" name="password" required>
+                    <label for="password">Password</label>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" name="confirm_password" required>
+                    <label for="confirm_password">Confirm Password</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

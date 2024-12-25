@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Notes App</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-photo/laptop-office-plant-black-background-top-view_169016-34505.jpg'); /* Use your own image URL here */
+            background-size: cover;
+            background-position: center;
+            color: rgb(12, 11, 11);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Navbar Styling */
+        nav {
+            width: 100%;
+            background-color:whitesmoke; /* Semi-transparent navbar */
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            
+        }
+
+        nav a {
+            color:black;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: hsl(60, 5%, 4%); /* Change color on hover */
+        }
+
+        /* Form Styling */
+        form {
+            background-color: whitesmoke; /*Semi-transparent background */           
+            padding: 30px;
+            border-radius: 8px;
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+            text-align: center;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color:#61045f;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            /* transition: background-color 0.3s ease; */
+        }
+
+        button:hover {
+            background-color:#aa076b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <a>Simple Notes App</a>
+    </nav>
+
+    <!-- Form -->
+        <h1>Simple Notes App</h1>
+        <h2>About</h2>
+        <a href="{{url_for('create')}}"><button>Create</button></a>
+        <a href="{{url_for('login')}}"><button>Login</button></a>
+</body>
+</html>
